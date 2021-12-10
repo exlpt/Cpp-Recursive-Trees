@@ -1,0 +1,43 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "shell",
+			"label": "Compile & Link C++ Program",
+			"command": "g++.exe",
+			"args": [
+				"-g",
+				"-std=c++17",
+				"-I./dependencies/include",
+				"-L./dependencies/lib",
+				"src/\\*.cpp",
+				"src/glad.c",
+				"-lglfw3dll",
+				"-o",
+				"${workspaceFolder}/build/Source.exe",
+			],
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		},
+		{
+			"type": "shell",
+			"label": "Run C++ Program",
+			"command": "build\\Source.exe",
+			"args": [],
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+		}
+	]
+}

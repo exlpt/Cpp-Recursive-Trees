@@ -5,6 +5,9 @@
 		}
 	],
 	"settings": {
-		"code-runner.customCommand": ""
+		"code-runner.customCommand": "",
+		"files.associations": {
+			"ostream": "cpp"
+		}
 	}
 }

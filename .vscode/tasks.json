@@ -9,6 +9,7 @@
 				"-g",
 				"-std=c++17",
 				"-I./dependencies/include",
+				"-I./include",
 				"-L./dependencies/lib",
 				"src/\\*.cpp",
 				"src/glad.c",

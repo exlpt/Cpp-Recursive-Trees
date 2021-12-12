@@ -1,4 +1,5 @@
 #include <Line.hpp>
+#include <math.h>
 #include <iostream>
 
 Line::Line() {
@@ -47,19 +48,25 @@ void Line::SetPoint(int pointInd, float* coords) {
 }
 
 void Line::CalculatePixelCoords() {
-    float offset = this->thickness / 50.0f;
-    float slope = -(this->point1[0] - this->point2[0]) / (this->point1[1] - this->point2[1]);
-    // Left
-    this->point1Pixel[0] = this->point1[0] - offset;
-    this->point1Pixel[1] = this->point1[1] - offset * slope;
-    // Right
-    this->point1Pixel[2] = this->point1[0] + offset;
-    this->point1Pixel[3] = this->point1[1] + offset * slope;
+    float d2 = this->thickness / 50.0f;
+    float d = sqrt(pow(point1[0] - point2[0], 2) + pow(point1[1] - point2[1], 2));
+    float xn = d2 * (point1[0] - point2[0]);
+    float yn = d2 * (point1[1] - point2[1]);
+
+    float x = xn / d;
+    float y = yn / d;
 
     // Left
-    this->point2Pixel[0] = this->point2[0] - offset;
-    this->point2Pixel[1] = this->point2[1] - offset * slope;
+    this->point1Pixel[0] = point1[0] + y;
+    this->point1Pixel[1] = point1[1] - x;
     // Right
-    this->point2Pixel[2] = this->point2[0] + offset;
-    this->point2Pixel[3] = this->point2[1] + offset * slope;
+    this->point1Pixel[2] = point1[0] - y;
+    this->point1Pixel[3] = point1[1] + x;
+
+    // Left
+    this->point2Pixel[0] = point2[0] + y;
+    this->point2Pixel[1] = point2[1] - x;
+    // Right
+    this->point2Pixel[2] = point2[0] - y;
+    this->point2Pixel[3] = point2[1] + x;
 }

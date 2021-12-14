@@ -13,6 +13,8 @@
 				"-L./dependencies/lib",
 				"src/\\*.cpp",
 				"-lSDL2.dll",
+				"-lSDL2_ttf.dll",
+				"-lSDL2_image.dll",
 				"-o",
 				"${workspaceFolder}/build/Source.exe",
 			],

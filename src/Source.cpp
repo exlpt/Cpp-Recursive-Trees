@@ -62,7 +62,7 @@ int main(void)
     GLuint shader = LoadShaders("assets/BasicVertex.shader", "assets/BasicFragment.shader");
     glUseProgram(shader);
 
-    int depth = 9;
+    int depth = 12;
     float testAngle = 0.0f;
     int framerate = 60;
     while (!glfwWindowShouldClose(window)) {
